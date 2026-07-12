@@ -165,26 +165,7 @@ function Hero() {
       <FloatingCloud className="top-40 left-0" size={110} duration={110} delay={20} reverse opacity={0.7} />
       <FloatingCloud className="top-4 left-0" size={90} duration={140} delay={40} opacity={0.6} />
 
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-2">
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-[var(--shadow-card)]">
-            <TreePine className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
-          </div>
-          <span className="font-display text-xl font-bold text-[color:var(--color-ink)]">
-            Jardim de Fé <span className="text-[color:var(--color-primary)]">Kids</span>
-          </span>
-        </div>
-        <a
-          href={CHECKOUT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-ghost hidden sm:inline-flex"
-        >
-          Quero conhecer
-        </a>
-      </nav>
-
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-6 sm:pt-12 lg:grid-cols-2 lg:items-center">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-10 pt-10 sm:pt-16 lg:grid-cols-2 lg:items-center">
         <Reveal>
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-semibold text-[color:var(--color-ink-soft)] shadow-[var(--shadow-card)] backdrop-blur">
@@ -197,9 +178,6 @@ function Hero() {
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
               Jardim de Fé Kids reúne 365 histórias bíblicas ilustradas, versículos, músicas e atividades para ajudar sua família a ensinar a Palavra de Deus de forma leve e inesquecível.
             </p>
-            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <CTAButton>Começar a jornada de fé</CTAButton>
-            </div>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm text-[color:var(--color-ink-soft)] lg:justify-start">
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
@@ -229,6 +207,10 @@ function Hero() {
             />
           </div>
         </Reveal>
+      </div>
+
+      <div className="mx-auto flex max-w-6xl justify-center px-6 pb-16">
+        <CTAButton>Começar a jornada de fé</CTAButton>
       </div>
 
       <SectionDivider color="white" />

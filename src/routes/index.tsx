@@ -8,33 +8,26 @@ import {
   Music,
   Moon,
   Sun,
-  Cloud,
   TreePine,
   Star,
   Gift,
   ShieldCheck,
   Check,
   ChevronDown,
-  Bird,
-  Feather,
+  Clock,
+  Palette,
+  BookMarked,
 } from "lucide-react";
 
-import heroScene from "@/assets/hero-scene.png";
-import familyScene from "@/assets/family-scene.png";
+import heroProduct from "@/assets/hero-product.jpg";
+
 import productDemo from "@/assets/product-demo.png";
 import cloudImg from "@/assets/cloud.png";
 
+const CHECKOUT_URL = "https://pay.wiapy.com/QgxtBvH_AVqs";
+
 export const Route = createFileRoute("/")({
   component: LandingPage,
-  head: () => ({
-    meta: [
-      {
-        property: "og:image",
-        content:
-          "https://id-preview--96afda6f-6d34-4136-a363-b250f1e6aa66.lovable.app/og-image.png",
-      },
-    ],
-  }),
 });
 
 /* ---------- Design primitives ---------- */
@@ -75,7 +68,12 @@ function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }
 
 function CTAButton({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <a href="#oferta" className={`btn-primary ${className}`}>
+    <a
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn-primary ${className}`}
+    >
       <Heart className="h-5 w-5" fill="currentColor" />
       {children}
     </a>
@@ -148,31 +146,25 @@ function FloatingCloud({
 function Hero() {
   return (
     <section className="relative overflow-hidden pt-8 sm:pt-12">
-      {/* Sky background */}
       <div
         aria-hidden
         className="absolute inset-0 -z-10"
         style={{
-          background:
-            "linear-gradient(180deg, #DFF4FF 0%, #EEF9FF 55%, #FDFCF3 100%)",
+          background: "linear-gradient(180deg, #DFF4FF 0%, #EEF9FF 55%, #FDFCF3 100%)",
         }}
       />
-      {/* Sun */}
       <div
         aria-hidden
         className="absolute -right-16 top-10 -z-10 h-56 w-56 rounded-full opacity-70 blur-2xl sm:h-72 sm:w-72"
         style={{ background: "radial-gradient(circle, #FFE28A 0%, transparent 70%)" }}
       />
-      {/* Twinkling stars */}
       <TinyStar className="absolute left-[10%] top-24 h-4 w-4" />
       <TinyStar className="absolute right-[18%] top-16 h-3 w-3" />
       <TinyStar className="absolute left-[45%] top-8 h-5 w-5" />
-      {/* Clouds */}
       <FloatingCloud className="top-16 left-0" size={140} duration={80} delay={0} opacity={0.85} />
       <FloatingCloud className="top-40 left-0" size={110} duration={110} delay={20} reverse opacity={0.7} />
       <FloatingCloud className="top-4 left-0" size={90} duration={140} delay={40} opacity={0.6} />
 
-      {/* Nav */}
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-2">
           <div className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-[var(--shadow-card)]">
@@ -182,7 +174,12 @@ function Hero() {
             Jardim de Fé <span className="text-[color:var(--color-primary)]">Kids</span>
           </span>
         </div>
-        <a href="#oferta" className="btn-ghost hidden sm:inline-flex">
+        <a
+          href={CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost hidden sm:inline-flex"
+        >
           Quero conhecer
         </a>
       </nav>
@@ -192,24 +189,20 @@ function Hero() {
           <div className="text-center lg:text-left">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-semibold text-[color:var(--color-ink-soft)] shadow-[var(--shadow-card)] backdrop-blur">
               <Sparkles className="h-4 w-4 text-[color:var(--color-sunshine-deep)]" />
-              Um jardim digital para semear a fé
+              365 parábolas para semear a fé
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
-              Planeie a fé no coração dos <span className="text-[color:var(--color-primary)]">seus pequenos</span>
+              Plante a fé no coração dos <span className="text-[color:var(--color-primary)]">seus pequenos</span>
               <span className="ml-2 inline-block" style={{ animation: "var(--animate-sway)" }}>
                 🌱
               </span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
-              Histórias bíblicas ilustradas, orações, músicas e devocionais em família — reunidos com carinho
-              para transformar cada dia em um momento de paz e aprendizado.
+              365 parábolas bíblicas ilustradas, versículos e músicas — reunidos com carinho
+              para transformar 3 minutos por dia em um momento eterno de fé em família.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <CTAButton>Começar a jornada de fé</CTAButton>
-              <a href="#demo" className="btn-ghost">
-                <BookOpen className="h-4 w-4" />
-                Ver por dentro
-              </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm text-[color:var(--color-ink-soft)] lg:justify-start">
               <div className="flex items-center gap-1.5">
@@ -231,26 +224,13 @@ function Hero() {
               style={{ background: "radial-gradient(circle at 50% 40%, #FFE28A55, transparent 65%)" }}
             />
             <img
-              src={heroScene}
-              alt="Ilustração de um tablet mostrando o app Jardim de Fé Kids com Bíblia, cruz e passarinhos"
-              width={1280}
-              height={1280}
-              className="mx-auto w-full max-w-lg drop-shadow-[0_20px_40px_rgba(60,110,180,0.25)]"
+              src={heroProduct}
+              alt="365 Parábolas Kids — livro ilustrado com bônus, aplicativo e materiais para impressão"
+              width={1600}
+              height={900}
+              className="mx-auto w-full max-w-xl rounded-[1.5rem] drop-shadow-[0_20px_40px_rgba(60,110,180,0.25)]"
               style={{ animation: "var(--animate-float-slow)" }}
             />
-            {/* Floating badges */}
-            <div className="absolute left-2 top-8 rounded-2xl bg-white px-3 py-2 shadow-[var(--shadow-card)] sm:left-8">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)]">
-                <Feather className="h-4 w-4 text-[color:var(--color-primary)]" />
-                +80 histórias
-              </div>
-            </div>
-            <div className="absolute -right-2 bottom-10 rounded-2xl bg-white px-3 py-2 shadow-[var(--shadow-card)] sm:right-4">
-              <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)]">
-                <Music className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
-                Músicas suaves
-              </div>
-            </div>
           </div>
         </Reveal>
       </div>
@@ -260,21 +240,118 @@ function Hero() {
   );
 }
 
-function Demo() {
+function Urgency() {
   return (
-    <section id="demo" className="relative bg-white pb-20 pt-10">
+    <section className="relative overflow-hidden bg-white py-16">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal>
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[color:var(--color-sky-soft)] px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+            <Sun className="h-4 w-4 text-[color:var(--color-sunshine-deep)]" />
+            Enquanto ainda são pequenos
+          </div>
+          <h2 className="mt-5 font-display text-3xl font-extrabold sm:text-4xl">
+            A infância passa depressa. A fé plantada agora floresce a vida inteira.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
+            Cada noite conta. Cada história ouvida vira memória. Cada oração feita em família se
+            transforma em um alicerce eterno no coração do seu pequeno.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Method() {
+  const steps = [
+    {
+      icon: BookOpen,
+      title: "1. Abra a parábola do dia",
+      text: "Uma nova história ilustrada aparece automaticamente todos os dias, pronta para ler.",
+    },
+    {
+      icon: Heart,
+      title: "2. Leia junto por 3 minutos",
+      text: "Linguagem simples, ilustrações lindas — atenção e carinho em um único momento.",
+    },
+    {
+      icon: Sparkles,
+      title: "3. Faça a mini-oração final",
+      text: "Uma frase curta que a criança repete, transformando a lição em memória do coração.",
+    },
+  ];
+  return (
+    <section className="relative overflow-hidden py-20" style={{ background: "#DFF4FF" }}>
+      <FloatingCloud className="top-6 left-0" size={110} duration={110} opacity={0.6} />
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-bold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+              <Clock className="h-4 w-4" />
+              Método 3 Minutos™
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
+              Fé em família em apenas 3 minutos por dia
+            </h2>
+            <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
+              Um passo a passo simples, para pais ocupados que querem semear grandes valores no
+              coração de seus filhos — sem complicação.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {steps.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <Reveal key={s.title} delay={i * 80}>
+                <div className="soft-card h-full text-center">
+                  <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[color:var(--color-sunshine)]">
+                    <Icon className="h-8 w-8 text-[color:var(--color-sunshine-deep)]" />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-bold">{s.title}</h3>
+                  <p className="mt-2 leading-relaxed text-[color:var(--color-ink-soft)]">{s.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+        <div className="mt-12 flex justify-center">
+          <CTAButton>Começar meus 3 minutos por dia</CTAButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Sample() {
+  const pages = [
+    {
+      title: "A Parábola da Ovelha Perdida",
+      text: "Uma história curta com ilustração fofa, para a criança sentir o amor de Deus.",
+    },
+    {
+      title: "Versículo do dia",
+      text: "Uma passagem curta traduzida em linguagem infantil, fácil de memorizar.",
+    },
+    {
+      title: "Momento de oração",
+      text: "Uma pequena oração para pai e filho fazerem juntos ao fim do momento.",
+    },
+  ];
+  return (
+    <section id="amostra" className="relative bg-white py-20">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
-              Uma janela mágica
+              Amostra do material
             </span>
             <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
-              Um livro que ganha vida nas mãos das crianças
+              Veja por dentro do 365 Parábolas Kids
             </h2>
             <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
-              Cada história é uma aventura ilustrada, contada com ternura, prontas para
-              serem lidas, ouvidas e reviver todas as noites.
+              Um livro digital que ganha vida em cores, com ilustrações que encantam as crianças
+              e conforto para os olhos dos pais.
             </p>
           </div>
         </Reveal>
@@ -284,13 +361,12 @@ function Demo() {
             <div
               className="absolute -inset-8 -z-10 rounded-[3rem]"
               style={{
-                background:
-                  "linear-gradient(140deg, #DFF4FF 0%, #FFE28A55 60%, #CDECCB 100%)",
+                background: "linear-gradient(140deg, #DFF4FF 0%, #FFE28A55 60%, #CDECCB 100%)",
               }}
             />
             <img
               src={productDemo}
-              alt="Livro ilustrado do Jardim de Fé Kids com a história da Arca de Noé"
+              alt="Páginas internas do 365 Parábolas Kids com ilustrações bíblicas"
               width={1280}
               height={1024}
               loading="lazy"
@@ -300,6 +376,20 @@ function Demo() {
             <FloatingCloud className="-right-4 -bottom-6" size={100} duration={140} reverse opacity={0.7} />
           </div>
         </Reveal>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {pages.map((p, i) => (
+            <Reveal key={p.title} delay={i * 80}>
+              <div className="soft-card h-full">
+                <div className="flex items-center gap-2 text-[color:var(--color-primary)]">
+                  <BookMarked className="h-5 w-5" />
+                  <span className="font-display font-bold">{p.title}</span>
+                </div>
+                <p className="mt-3 text-[color:var(--color-ink-soft)]">{p.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -309,8 +399,8 @@ const BENEFITS = [
   {
     icon: BookOpen,
     color: "var(--color-primary)",
-    title: "Histórias bíblicas ilustradas",
-    text: "Mais de 80 narrativas em linguagem simples e ilustrações que encantam.",
+    title: "365 parábolas ilustradas",
+    text: "Uma nova história bíblica todos os dias, em linguagem simples e encantadora.",
   },
   {
     icon: Music,
@@ -390,102 +480,76 @@ function Benefits() {
   );
 }
 
-function Urgency() {
-  return (
-    <section className="relative overflow-hidden py-16" style={{ background: "#DFF4FF" }}>
-      <FloatingCloud className="top-6 left-0" size={120} duration={90} opacity={0.7} />
-      <FloatingCloud className="bottom-6 left-0" size={90} duration={130} reverse opacity={0.6} />
-      <div className="mx-auto max-w-4xl px-6 text-center">
-        <Reveal>
-          <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
-            <Sun className="h-4 w-4 text-[color:var(--color-sunshine-deep)]" />
-            Enquanto ainda são pequenos
-          </div>
-          <h2 className="mt-5 font-display text-3xl font-extrabold sm:text-4xl">
-            A infância passa depressa. A fé plantada agora floresce a vida inteira.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
-            Cada noite conta. Cada história ouvida vira memória. Cada oração feita em família se
-            transforma em um alicerce eterno.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-const IDEAL = [
-  { icon: Heart, title: "Mães e pais", text: "que querem plantar fé desde cedo." },
-  { icon: Users, title: "Avós amorosos", text: "que criam memórias inesquecíveis." },
-  { icon: BookOpen, title: "Professores cristãos", text: "que buscam materiais lindos." },
-  { icon: TreePine, title: "Famílias em oração", text: "que desejam crescer juntas em fé." },
+const TESTIMONIALS = [
+  {
+    name: "Camila R.",
+    role: "Mãe do Théo, 4 anos",
+    text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
+  },
+  {
+    name: "Dona Zilda",
+    role: "Avó de 3 netinhos",
+    text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
+  },
+  {
+    name: "Prof. Márcia",
+    role: "Escola dominical",
+    text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
+  },
 ];
 
-function IdealFor() {
+function Social() {
   return (
-    <section className="relative bg-white py-20">
+    <section className="bg-[color:var(--color-sky-soft)] py-20">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
-                Ideal para
-              </span>
-              <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
-                Feito com carinho para quem cuida de corações pequeninos
-              </h2>
-              <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
-                Um espaço acolhedor para toda a família viver a fé de um jeito leve e alegre.
-              </p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {IDEAL.map((it) => {
-                  const Icon = it.icon;
-                  return (
-                    <div
-                      key={it.title}
-                      className="flex items-start gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white/60 p-4"
-                    >
-                      <div
-                        className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
-                        style={{ background: "color-mix(in oklab, var(--color-primary) 12%, white)" }}
-                      >
-                        <Icon className="h-5 w-5 text-[color:var(--color-primary)]" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="font-display font-bold">{it.title}</div>
-                        <div className="text-sm text-[color:var(--color-ink-soft)]">{it.text}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src={familyScene}
-                alt="Família cristã sorrindo em um jardim lendo uma Bíblia infantil"
-                width={1280}
-                height={1024}
-                loading="lazy"
-                className="w-full rounded-[2rem] shadow-[var(--shadow-soft)]"
-              />
-              <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white px-4 py-3 shadow-[var(--shadow-card)]">
-                <div className="flex items-center gap-2">
-                  <Bird className="h-5 w-5 text-[color:var(--color-primary)]" />
-                  <span className="font-display font-bold">Momentos que ficam</span>
-                </div>
-              </div>
-            </div>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
+              Famílias contando o que aconteceu em casa
+            </h2>
+            <p className="mt-3 text-[color:var(--color-ink-soft)]">
+              Milhares de pais, avós e professores já plantaram esse jardim.
+            </p>
           </div>
         </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <Reveal key={t.name} delay={i * 80}>
+              <div className="soft-card h-full">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, k) => (
+                    <Star
+                      key={k}
+                      className="h-4 w-4 text-[color:var(--color-sunshine-deep)]"
+                      fill="currentColor"
+                    />
+                  ))}
+                </div>
+                <p className="mt-3 text-[color:var(--color-ink)]">"{t.text}"</p>
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--color-sky-soft)]">
+                    <Heart
+                      className="h-4 w-4 text-[color:var(--color-primary)]"
+                      fill="currentColor"
+                    />
+                  </div>
+                  <div>
+                    <div className="font-display font-bold">{t.name}</div>
+                    <div className="text-sm text-[color:var(--color-ink-soft)]">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
 const RECEIVES = [
-  "Coletânea completa com mais de 80 histórias bíblicas ilustradas",
-  "Devocional guiado para a hora de dormir (365 dias)",
+  "365 parábolas bíblicas ilustradas (uma para cada dia do ano)",
+  "Devocional guiado para a hora de dormir",
   "Biblioteca de canções cristãs infantis suaves",
   "Atividades imprimíveis para colorir e memorizar",
   "Roteiros de oração em família para todas as idades",
@@ -525,19 +589,19 @@ function WhatYouGet() {
 
 const BONUSES = [
   {
-    icon: Gift,
-    title: "Bônus 1 — Cartões de Versículos",
-    text: "50 cartões ilustrados para imprimir, presentear e memorizar juntos.",
+    icon: Palette,
+    title: "Coleção de Desenhos pra Colorir",
+    text: "Um desenho bíblico pra cada semana, pra fixar a lição brincando.",
+  },
+  {
+    icon: BookMarked,
+    title: "30 Versículos Explicados pra Criança",
+    text: "Versículos-chave da Bíblia, traduzidos em linguagem que os pequenos entendem.",
   },
   {
     icon: Music,
-    title: "Bônus 2 — Playlist Soneca",
-    text: "Canções instrumentais suaves para embalar o descanso das crianças.",
-  },
-  {
-    icon: Sparkles,
-    title: "Bônus 3 — Guia dos Pais",
-    text: "Como conversar sobre Deus em cada fase da infância, com leveza.",
+    title: "Playlist de Louvor Infantil",
+    text: "Uma seleção de músicas cristãs leves pra tocar durante o momento de leitura.",
   },
 ];
 
@@ -558,7 +622,7 @@ function Bonuses() {
           <div className="mx-auto max-w-2xl text-center">
             <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
               <Gift className="h-4 w-4" />
-              Bônus especiais
+              Bônus exclusivos inclusos hoje
             </div>
             <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
               Presentes que enchem o jardim de flores
@@ -617,18 +681,18 @@ function Offer() {
               </p>
 
               <div className="mt-8 flex flex-col items-center gap-1">
-                <span className="text-[color:var(--color-ink-soft)] line-through">
-                  De R$ 197,00
+                <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
+                  Hoje por apenas
                 </span>
-                <div className="flex items-end gap-2">
+                <div className="mt-1 flex items-end gap-2">
                   <span className="font-display text-2xl font-bold text-[color:var(--color-ink)]">R$</span>
-                  <span className="font-display text-6xl font-extrabold text-[color:var(--color-primary)]">
-                    47
+                  <span className="font-display text-7xl font-extrabold text-[color:var(--color-primary)]">
+                    10
                   </span>
                   <span className="font-display text-2xl font-bold text-[color:var(--color-ink)]">,00</span>
                 </div>
                 <span className="text-sm text-[color:var(--color-ink-soft)]">
-                  ou 5x de R$ 9,90 sem juros
+                  Pagamento único • Acesso imediato
                 </span>
               </div>
 
@@ -647,68 +711,30 @@ function Offer() {
   );
 }
 
-const TESTIMONIALS = [
-  {
-    name: "Camila R.",
-    role: "Mãe do Théo, 4 anos",
-    text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
-  },
-  {
-    name: "Dona Zilda",
-    role: "Avó de 3 netinhos",
-    text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
-  },
-  {
-    name: "Prof. Márcia",
-    role: "Escola dominical",
-    text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
-  },
-];
-
-function Social() {
+function Guarantee() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="relative bg-white py-20">
+      <div className="mx-auto max-w-4xl px-6">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
-              Famílias contando o que aconteceu em casa
-            </h2>
-            <p className="mt-3 text-[color:var(--color-ink-soft)]">
-              Milhares de pais, avós e professores já plantaram esse jardim.
-            </p>
+          <div className="relative flex flex-col items-center gap-8 rounded-[2.5rem] border border-[color:var(--color-border)] bg-[color:var(--color-sky-soft)] p-8 text-center shadow-[var(--shadow-card)] sm:p-12 md:flex-row md:text-left">
+            <div className="grid h-28 w-28 shrink-0 place-items-center rounded-full bg-white shadow-[var(--shadow-card)]">
+              <ShieldCheck className="h-14 w-14 text-[color:var(--color-meadow-deep)]" />
+            </div>
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[color:var(--color-primary)]">
+                Garantia incondicional
+              </span>
+              <h2 className="mt-3 font-display text-2xl font-extrabold sm:text-3xl">
+                7 dias para experimentar com a família — sem risco
+              </h2>
+              <p className="mt-3 text-[color:var(--color-ink-soft)]">
+                Se você não sentir que o Jardim de Fé Kids transformou o momento em família, basta
+                nos enviar um e-mail em até 7 dias e devolvemos 100% do seu investimento. O risco
+                é todo nosso.
+              </p>
+            </div>
           </div>
         </Reveal>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 80}>
-              <div className="soft-card h-full">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, k) => (
-                    <Star
-                      key={k}
-                      className="h-4 w-4 text-[color:var(--color-sunshine-deep)]"
-                      fill="currentColor"
-                    />
-                  ))}
-                </div>
-                <p className="mt-3 text-[color:var(--color-ink)]">"{t.text}"</p>
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--color-sky-soft)]">
-                    <Heart
-                      className="h-4 w-4 text-[color:var(--color-primary)]"
-                      fill="currentColor"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-display font-bold">{t.name}</div>
-                    <div className="text-sm text-[color:var(--color-ink-soft)]">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -788,34 +814,9 @@ function FAQ() {
             </Reveal>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function FinalCTA() {
-  return (
-    <section className="relative overflow-hidden py-20" style={{ background: "#DFF4FF" }}>
-      <FloatingCloud className="top-6 left-0" size={110} duration={120} opacity={0.7} />
-      <FloatingCloud className="bottom-6 left-0" size={90} duration={140} reverse opacity={0.6} />
-      <TinyStar className="absolute right-12 top-10 h-4 w-4" />
-      <TinyStar className="absolute left-16 bottom-12 h-3 w-3" />
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <Reveal>
-          <Cloud className="mx-auto h-12 w-12 text-white drop-shadow-md" fill="white" strokeWidth={1.2} />
-          <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-5xl">
-            Deixe a fé florescer no coração dos seus pequenos
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-[color:var(--color-ink-soft)]">
-            Um jardim de histórias, orações e músicas esperando pela sua família — hoje mesmo.
-          </p>
-          <div className="mt-8 flex flex-col items-center gap-3">
-            <CTAButton>Começar agora meu Jardim de Fé</CTAButton>
-            <span className="text-sm text-[color:var(--color-ink-soft)]">
-              Pagamento 100% seguro • Acesso imediato
-            </span>
-          </div>
-        </Reveal>
+        <div className="mt-12 flex justify-center">
+          <CTAButton>Quero começar agora</CTAButton>
+        </div>
       </div>
     </section>
   );
@@ -856,17 +857,18 @@ function LandingPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Hero />
-      <Demo />
-      <Benefits />
       <Urgency />
-      <IdealFor />
+      <Method />
+      <Sample />
+      <Benefits />
+      <Social />
       <WhatYouGet />
       <Bonuses />
       <Offer />
-      <Social />
+      <Guarantee />
       <FAQ />
-      <FinalCTA />
       <Footer />
     </main>
   );
 }
+

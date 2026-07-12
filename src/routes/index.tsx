@@ -307,21 +307,31 @@ function Method() {
   );
 }
 
+const PARABLES = [
+  {
+    image: parable1.url,
+    title: "O Cordeirinho que Confiou no Pastor",
+    verse: "Salmo 23:1",
+    lesson: "Quando confiamos em Deus, estamos sempre protegidos.",
+  },
+  {
+    image: parable2.url,
+    title: "Amostra do livro digital",
+    verse: "Palavra de Deus",
+    lesson: "Cada parábola vem com história, versículo e lição do dia.",
+  },
+  {
+    image: parable3.url,
+    title: "Uma nova história todo dia",
+    verse: "365 dias do ano",
+    lesson: "Ilustrações fofas para encantar os pequenos.",
+  },
+];
+
 function Sample() {
-  const pages = [
-    {
-      title: "A Parábola da Ovelha Perdida",
-      text: "Uma história curta com ilustração fofa, para a criança sentir o amor de Deus.",
-    },
-    {
-      title: "Versículo do dia",
-      text: "Uma passagem curta traduzida em linguagem infantil, fácil de memorizar.",
-    },
-    {
-      title: "Momento de oração",
-      text: "Uma pequena oração para pai e filho fazerem juntos ao fim do momento.",
-    },
-  ];
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + PARABLES.length) % PARABLES.length);
+  const next = () => setIdx((i) => (i + 1) % PARABLES.length);
   return (
     <section id="amostra" className="relative bg-white py-20">
       <div className="mx-auto max-w-6xl px-6">
@@ -334,8 +344,7 @@ function Sample() {
               Veja por dentro do 365 Parábolas Kids
             </h2>
             <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
-              Um livro digital que ganha vida em cores, com ilustrações que encantam as crianças
-              e conforto para os olhos dos pais.
+              Deslize entre as páginas e veja o carinho por trás de cada história.
             </p>
           </div>
         </Reveal>
@@ -348,32 +357,74 @@ function Sample() {
                 background: "linear-gradient(140deg, #DFF4FF 0%, #FFE28A55 60%, #CDECCB 100%)",
               }}
             />
-            <img
-              src={productDemo}
-              alt="Páginas internas do 365 Parábolas Kids com ilustrações bíblicas"
-              width={1280}
-              height={1024}
-              loading="lazy"
-              className="mx-auto w-full max-w-4xl rounded-[2rem] shadow-[var(--shadow-soft)]"
-            />
-            <FloatingCloud className="-left-6 -top-8" size={80} duration={120} opacity={0.7} />
-            <FloatingCloud className="-right-4 -bottom-6" size={100} duration={140} reverse opacity={0.7} />
+            <div className="flex items-center justify-center gap-3 sm:gap-6">
+              <button
+                aria-label="Parábola anterior"
+                onClick={prev}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[color:var(--color-primary)] shadow-[var(--shadow-card)] transition hover:scale-105"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+
+              <div className="grid w-full max-w-4xl gap-6 sm:grid-cols-3">
+                {[0, 1, 2].map((offset) => {
+                  const i = (idx + offset) % PARABLES.length;
+                  const p = PARABLES[i];
+                  return (
+                    <div
+                      key={i}
+                      className={`soft-card overflow-hidden p-0 ${
+                        offset === 1 ? "sm:scale-105" : "hidden sm:block"
+                      }`}
+                    >
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        loading="lazy"
+                        className="aspect-[3/4] w-full object-cover"
+                      />
+                      <div className="p-5">
+                        <div className="flex items-center gap-2 text-[color:var(--color-primary)]">
+                          <BookMarked className="h-4 w-4" />
+                          <span className="text-xs font-bold uppercase tracking-widest">
+                            {p.verse}
+                          </span>
+                        </div>
+                        <h3 className="mt-2 font-display text-lg font-bold">{p.title}</h3>
+                        <p className="mt-2 text-sm text-[color:var(--color-ink-soft)]">
+                          {p.lesson}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <button
+                aria-label="Próxima parábola"
+                onClick={next}
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-[color:var(--color-primary)] shadow-[var(--shadow-card)] transition hover:scale-105"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div className="mt-6 flex justify-center gap-2">
+              {PARABLES.map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Ir para parábola ${i + 1}`}
+                  onClick={() => setIdx(i)}
+                  className={`h-2.5 rounded-full transition-all ${
+                    i === idx
+                      ? "w-8 bg-[color:var(--color-primary)]"
+                      : "w-2.5 bg-[color:var(--color-primary)]/30"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </Reveal>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {pages.map((p, i) => (
-            <Reveal key={p.title} delay={i * 80}>
-              <div className="soft-card h-full">
-                <div className="flex items-center gap-2 text-[color:var(--color-primary)]">
-                  <BookMarked className="h-5 w-5" />
-                  <span className="font-display font-bold">{p.title}</span>
-                </div>
-                <p className="mt-3 text-[color:var(--color-ink-soft)]">{p.text}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );

@@ -192,14 +192,10 @@ function Hero() {
               365 parábolas para semear a fé
             </span>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
-              Plante a fé no coração dos <span className="text-[color:var(--color-primary)]">seus pequenos</span>
-              <span className="ml-2 inline-block" style={{ animation: "var(--animate-sway)" }}>
-                🌱
-              </span>
+              Transforme apenas 3 minutos antes de dormir no momento mais importante do dia do seu filho.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
-              365 parábolas bíblicas ilustradas, versículos e músicas — reunidos com carinho
-              para transformar 3 minutos por dia em um momento eterno de fé em família.
+              Jardim de Fé Kids reúne 365 histórias bíblicas ilustradas, versículos, músicas e atividades para ajudar sua família a ensinar a Palavra de Deus de forma leve e inesquecível.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <CTAButton>Começar a jornada de fé</CTAButton>
@@ -566,7 +562,7 @@ function WhatYouGet() {
               O que você recebe
             </span>
             <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
-              Um jardim inteiro de fé no seu celular
+              Tudo o que você precisa para criar um momento de fé em família, todos os dias, sem precisar preparar nada.
             </h2>
           </div>
         </Reveal>
@@ -742,15 +738,15 @@ function Guarantee() {
 
 const FAQS = [
   {
-    q: "A partir de que idade meu filho pode usar?",
+    q: "Meu filho não gosta de ler. Mesmo assim funciona?",
     a: "O Jardim de Fé Kids foi pensado para crianças de 2 a 10 anos, com histórias e atividades adaptáveis a cada fase.",
   },
   {
-    q: "Como funciona o acesso?",
+    q: "Sou católico. Posso usar?",
     a: "Após a compra, você recebe imediatamente por e-mail os dados para acessar todo o conteúdo em qualquer dispositivo.",
   },
   {
-    q: "Preciso de conexão constante com a internet?",
+    q: "\n",
     a: "As histórias e áudios podem ser baixados no seu aparelho, para acesso mesmo sem internet, quando quiser.",
   },
   {

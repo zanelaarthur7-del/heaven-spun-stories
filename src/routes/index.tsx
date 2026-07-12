@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 
 import heroProduct from "@/assets/hero-product.jpg";
-import familyScene from "@/assets/family-scene.png";
+
 import productDemo from "@/assets/product-demo.png";
 import cloudImg from "@/assets/cloud.png";
 

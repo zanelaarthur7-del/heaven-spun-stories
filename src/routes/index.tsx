@@ -1,24 +1,872 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  BookOpen,
+  Heart,
+  Sparkles,
+  Users,
+  Music,
+  Moon,
+  Sun,
+  Cloud,
+  TreePine,
+  Star,
+  Gift,
+  ShieldCheck,
+  Check,
+  ChevronDown,
+  Bird,
+  Feather,
+} from "lucide-react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import heroScene from "@/assets/hero-scene.png";
+import familyScene from "@/assets/family-scene.png";
+import productDemo from "@/assets/product-demo.png";
+import cloudImg from "@/assets/cloud.png";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: LandingPage,
+  head: () => ({
+    meta: [
+      {
+        property: "og:image",
+        content:
+          "https://id-preview--96afda6f-6d34-4136-a363-b250f1e6aa66.lovable.app/og-image.png",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+/* ---------- Design primitives ---------- */
+
+function Reveal({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   return (
     <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+      }}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+      {children}
     </div>
+  );
+}
+
+function CTAButton({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <a href="#oferta" className={`btn-primary ${className}`}>
+      <Heart className="h-5 w-5" fill="currentColor" />
+      {children}
+    </a>
+  );
+}
+
+function TinyStar({ className = "" }: { className?: string }) {
+  return (
+    <Star
+      className={`text-[color:var(--color-sunshine-deep)] ${className}`}
+      style={{ animation: "var(--animate-twinkle)" }}
+      fill="currentColor"
+    />
+  );
+}
+
+function SectionDivider({ flip = false, color = "white" }: { flip?: boolean; color?: string }) {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none -mt-px w-full"
+      style={{ transform: flip ? "rotate(180deg)" : "none" }}
+    >
+      <svg viewBox="0 0 1440 120" className="block h-16 w-full sm:h-24" preserveAspectRatio="none">
+        <path
+          d="M0,64 C240,128 480,0 720,48 C960,96 1200,32 1440,72 L1440,120 L0,120 Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  );
+}
+
+function FloatingCloud({
+  className = "",
+  size = 180,
+  duration = 60,
+  delay = 0,
+  reverse = false,
+  opacity = 0.9,
+}: {
+  className?: string;
+  size?: number;
+  duration?: number;
+  delay?: number;
+  reverse?: boolean;
+  opacity?: number;
+}) {
+  return (
+    <img
+      src={cloudImg}
+      alt=""
+      aria-hidden
+      loading="lazy"
+      width={size}
+      height={size}
+      className={`pointer-events-none absolute select-none ${className}`}
+      style={{
+        width: size,
+        opacity,
+        animation: `${reverse ? "drift-reverse" : "drift"} ${duration}s linear infinite`,
+        animationDelay: `${delay}s`,
+      }}
+    />
+  );
+}
+
+/* ---------- Sections ---------- */
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden pt-8 sm:pt-12">
+      {/* Sky background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, #DFF4FF 0%, #EEF9FF 55%, #FDFCF3 100%)",
+        }}
+      />
+      {/* Sun */}
+      <div
+        aria-hidden
+        className="absolute -right-16 top-10 -z-10 h-56 w-56 rounded-full opacity-70 blur-2xl sm:h-72 sm:w-72"
+        style={{ background: "radial-gradient(circle, #FFE28A 0%, transparent 70%)" }}
+      />
+      {/* Twinkling stars */}
+      <TinyStar className="absolute left-[10%] top-24 h-4 w-4" />
+      <TinyStar className="absolute right-[18%] top-16 h-3 w-3" />
+      <TinyStar className="absolute left-[45%] top-8 h-5 w-5" />
+      {/* Clouds */}
+      <FloatingCloud className="top-16 left-0" size={140} duration={80} delay={0} opacity={0.85} />
+      <FloatingCloud className="top-40 left-0" size={110} duration={110} delay={20} reverse opacity={0.7} />
+      <FloatingCloud className="top-4 left-0" size={90} duration={140} delay={40} opacity={0.6} />
+
+      {/* Nav */}
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="flex items-center gap-2">
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-white shadow-[var(--shadow-card)]">
+            <TreePine className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
+          </div>
+          <span className="font-display text-xl font-bold text-[color:var(--color-ink)]">
+            Jardim de Fé <span className="text-[color:var(--color-primary)]">Kids</span>
+          </span>
+        </div>
+        <a href="#oferta" className="btn-ghost hidden sm:inline-flex">
+          Quero conhecer
+        </a>
+      </nav>
+
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 pb-16 pt-6 sm:pt-12 lg:grid-cols-2 lg:items-center">
+        <Reveal>
+          <div className="text-center lg:text-left">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1.5 text-sm font-semibold text-[color:var(--color-ink-soft)] shadow-[var(--shadow-card)] backdrop-blur">
+              <Sparkles className="h-4 w-4 text-[color:var(--color-sunshine-deep)]" />
+              Um jardim digital para semear a fé
+            </span>
+            <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
+              Planeie a fé no coração dos <span className="text-[color:var(--color-primary)]">seus pequenos</span>
+              <span className="ml-2 inline-block" style={{ animation: "var(--animate-sway)" }}>
+                🌱
+              </span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
+              Histórias bíblicas ilustradas, orações, músicas e devocionais em família — reunidos com carinho
+              para transformar cada dia em um momento de paz e aprendizado.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+              <CTAButton>Começar a jornada de fé</CTAButton>
+              <a href="#demo" className="btn-ghost">
+                <BookOpen className="h-4 w-4" />
+                Ver por dentro
+              </a>
+            </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm text-[color:var(--color-ink-soft)] lg:justify-start">
+              <div className="flex items-center gap-1.5">
+                <ShieldCheck className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
+                Conteúdo 100% cristão
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Heart className="h-4 w-4 text-[color:var(--color-primary)]" fill="currentColor" />
+                Feito para toda a família
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={150}>
+          <div className="relative">
+            <div
+              className="absolute -inset-6 -z-10 rounded-[3rem]"
+              style={{ background: "radial-gradient(circle at 50% 40%, #FFE28A55, transparent 65%)" }}
+            />
+            <img
+              src={heroScene}
+              alt="Ilustração de um tablet mostrando o app Jardim de Fé Kids com Bíblia, cruz e passarinhos"
+              width={1280}
+              height={1280}
+              className="mx-auto w-full max-w-lg drop-shadow-[0_20px_40px_rgba(60,110,180,0.25)]"
+              style={{ animation: "var(--animate-float-slow)" }}
+            />
+            {/* Floating badges */}
+            <div className="absolute left-2 top-8 rounded-2xl bg-white px-3 py-2 shadow-[var(--shadow-card)] sm:left-8">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)]">
+                <Feather className="h-4 w-4 text-[color:var(--color-primary)]" />
+                +80 histórias
+              </div>
+            </div>
+            <div className="absolute -right-2 bottom-10 rounded-2xl bg-white px-3 py-2 shadow-[var(--shadow-card)] sm:right-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-[color:var(--color-ink)]">
+                <Music className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
+                Músicas suaves
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+
+      <SectionDivider color="white" />
+    </section>
+  );
+}
+
+function Demo() {
+  return (
+    <section id="demo" className="relative bg-white pb-20 pt-10">
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
+              Uma janela mágica
+            </span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+              Um livro que ganha vida nas mãos das crianças
+            </h2>
+            <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
+              Cada história é uma aventura ilustrada, contada com ternura, prontas para
+              serem lidas, ouvidas e reviver todas as noites.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div className="relative mt-12">
+            <div
+              className="absolute -inset-8 -z-10 rounded-[3rem]"
+              style={{
+                background:
+                  "linear-gradient(140deg, #DFF4FF 0%, #FFE28A55 60%, #CDECCB 100%)",
+              }}
+            />
+            <img
+              src={productDemo}
+              alt="Livro ilustrado do Jardim de Fé Kids com a história da Arca de Noé"
+              width={1280}
+              height={1024}
+              loading="lazy"
+              className="mx-auto w-full max-w-4xl rounded-[2rem] shadow-[var(--shadow-soft)]"
+            />
+            <FloatingCloud className="-left-6 -top-8" size={80} duration={120} opacity={0.7} />
+            <FloatingCloud className="-right-4 -bottom-6" size={100} duration={140} reverse opacity={0.7} />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const BENEFITS = [
+  {
+    icon: BookOpen,
+    color: "var(--color-primary)",
+    title: "Histórias bíblicas ilustradas",
+    text: "Mais de 80 narrativas em linguagem simples e ilustrações que encantam.",
+  },
+  {
+    icon: Music,
+    color: "var(--color-meadow-deep)",
+    title: "Músicas e louvores suaves",
+    text: "Canções carinhosas para acalmar, adorar e criar memórias em família.",
+  },
+  {
+    icon: Moon,
+    color: "var(--color-sunshine-deep)",
+    title: "Devocional da hora de dormir",
+    text: "Uma oração, uma passagem e um sorriso para fechar bem o dia.",
+  },
+  {
+    icon: Heart,
+    color: "var(--color-primary)",
+    title: "Atividades para colorir",
+    text: "Momentos criativos que ajudam a fixar valores e ensinamentos.",
+  },
+  {
+    icon: Users,
+    color: "var(--color-meadow-deep)",
+    title: "Momentos em família",
+    text: "Roteiros prontos para pais, avós e professores viverem juntos a fé.",
+  },
+  {
+    icon: Sparkles,
+    color: "var(--color-sunshine-deep)",
+    title: "Ambiente 100% seguro",
+    text: "Nenhum anúncio, nenhum conteúdo estranho — só carinho e fé.",
+  },
+];
+
+function Benefits() {
+  return (
+    <section className="relative overflow-hidden bg-white py-20">
+      <TinyStar className="absolute right-10 top-10 h-4 w-4" />
+      <TinyStar className="absolute left-12 bottom-12 h-3 w-3" />
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
+              Tudo o que uma família precisa para ensinar a fé com leveza
+            </h2>
+            <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
+              Ferramentas simples, criadas com carinho para os corações que estão apenas começando.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BENEFITS.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <Reveal key={b.title} delay={i * 60}>
+                <div className="soft-card h-full">
+                  <div
+                    className="grid h-14 w-14 place-items-center rounded-2xl"
+                    style={{ background: `color-mix(in oklab, ${b.color} 15%, white)` }}
+                  >
+                    <Icon className="h-7 w-7" style={{ color: b.color }} />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-bold">{b.title}</h3>
+                  <p className="mt-2 leading-relaxed text-[color:var(--color-ink-soft)]">{b.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <CTAButton>Quero para minha família</CTAButton>
+        </div>
+      </div>
+      <SectionDivider color="#DFF4FF" />
+    </section>
+  );
+}
+
+function Urgency() {
+  return (
+    <section className="relative overflow-hidden py-16" style={{ background: "#DFF4FF" }}>
+      <FloatingCloud className="top-6 left-0" size={120} duration={90} opacity={0.7} />
+      <FloatingCloud className="bottom-6 left-0" size={90} duration={130} reverse opacity={0.6} />
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal>
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+            <Sun className="h-4 w-4 text-[color:var(--color-sunshine-deep)]" />
+            Enquanto ainda são pequenos
+          </div>
+          <h2 className="mt-5 font-display text-3xl font-extrabold sm:text-4xl">
+            A infância passa depressa. A fé plantada agora floresce a vida inteira.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
+            Cada noite conta. Cada história ouvida vira memória. Cada oração feita em família se
+            transforma em um alicerce eterno.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const IDEAL = [
+  { icon: Heart, title: "Mães e pais", text: "que querem plantar fé desde cedo." },
+  { icon: Users, title: "Avós amorosos", text: "que criam memórias inesquecíveis." },
+  { icon: BookOpen, title: "Professores cristãos", text: "que buscam materiais lindos." },
+  { icon: TreePine, title: "Famílias em oração", text: "que desejam crescer juntas em fé." },
+];
+
+function IdealFor() {
+  return (
+    <section className="relative bg-white py-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
+                Ideal para
+              </span>
+              <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+                Feito com carinho para quem cuida de corações pequeninos
+              </h2>
+              <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
+                Um espaço acolhedor para toda a família viver a fé de um jeito leve e alegre.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {IDEAL.map((it) => {
+                  const Icon = it.icon;
+                  return (
+                    <div
+                      key={it.title}
+                      className="flex items-start gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white/60 p-4"
+                    >
+                      <div
+                        className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
+                        style={{ background: "color-mix(in oklab, var(--color-primary) 12%, white)" }}
+                      >
+                        <Icon className="h-5 w-5 text-[color:var(--color-primary)]" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-display font-bold">{it.title}</div>
+                        <div className="text-sm text-[color:var(--color-ink-soft)]">{it.text}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="relative">
+              <img
+                src={familyScene}
+                alt="Família cristã sorrindo em um jardim lendo uma Bíblia infantil"
+                width={1280}
+                height={1024}
+                loading="lazy"
+                className="w-full rounded-[2rem] shadow-[var(--shadow-soft)]"
+              />
+              <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white px-4 py-3 shadow-[var(--shadow-card)]">
+                <div className="flex items-center gap-2">
+                  <Bird className="h-5 w-5 text-[color:var(--color-primary)]" />
+                  <span className="font-display font-bold">Momentos que ficam</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const RECEIVES = [
+  "Coletânea completa com mais de 80 histórias bíblicas ilustradas",
+  "Devocional guiado para a hora de dormir (365 dias)",
+  "Biblioteca de canções cristãs infantis suaves",
+  "Atividades imprimíveis para colorir e memorizar",
+  "Roteiros de oração em família para todas as idades",
+  "Atualizações constantes com novas histórias e músicas",
+];
+
+function WhatYouGet() {
+  return (
+    <section className="relative py-20" style={{ background: "#FBF9F0" }}>
+      <div className="mx-auto max-w-5xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
+              O que você recebe
+            </span>
+            <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+              Um jardim inteiro de fé no seu celular
+            </h2>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          {RECEIVES.map((r, i) => (
+            <Reveal key={r} delay={i * 40}>
+              <div className="flex items-start gap-3 rounded-2xl bg-white p-5 shadow-[var(--shadow-card)]">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[color:var(--color-meadow)]">
+                  <Check className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
+                </div>
+                <p className="pt-0.5 text-[color:var(--color-ink)]">{r}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const BONUSES = [
+  {
+    icon: Gift,
+    title: "Bônus 1 — Cartões de Versículos",
+    text: "50 cartões ilustrados para imprimir, presentear e memorizar juntos.",
+  },
+  {
+    icon: Music,
+    title: "Bônus 2 — Playlist Soneca",
+    text: "Canções instrumentais suaves para embalar o descanso das crianças.",
+  },
+  {
+    icon: Sparkles,
+    title: "Bônus 3 — Guia dos Pais",
+    text: "Como conversar sobre Deus em cada fase da infância, com leveza.",
+  },
+];
+
+function Bonuses() {
+  return (
+    <section className="relative overflow-hidden py-20" style={{ background: "#CDECCB" }}>
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-24"
+        style={{
+          background: "linear-gradient(180deg, #FBF9F0 0%, transparent 100%)",
+        }}
+      />
+      <TinyStar className="absolute left-10 top-12 h-4 w-4" />
+      <TinyStar className="absolute right-14 bottom-10 h-3 w-3" />
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+              <Gift className="h-4 w-4" />
+              Bônus especiais
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
+              Presentes que enchem o jardim de flores
+            </h2>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BONUSES.map((b, i) => {
+            const Icon = b.icon;
+            return (
+              <Reveal key={b.title} delay={i * 80}>
+                <div className="soft-card h-full">
+                  <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[color:var(--color-sunshine)]">
+                    <Icon className="h-7 w-7 text-[color:var(--color-sunshine-deep)]" />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-bold">{b.title}</h3>
+                  <p className="mt-2 text-[color:var(--color-ink-soft)]">{b.text}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Offer() {
+  return (
+    <section id="oferta" className="relative overflow-hidden py-20" style={{ background: "#DFF4FF" }}>
+      <FloatingCloud className="top-8 left-0" size={130} duration={100} opacity={0.7} />
+      <FloatingCloud className="top-32 left-0" size={90} duration={140} reverse opacity={0.6} />
+      <div
+        aria-hidden
+        className="absolute -right-20 -top-20 h-64 w-64 rounded-full blur-3xl"
+        style={{ background: "#FFE28A88" }}
+      />
+      <div className="mx-auto max-w-3xl px-6">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-8 shadow-[var(--shadow-soft)] sm:p-12">
+            <div
+              aria-hidden
+              className="absolute -right-10 -top-10 h-40 w-40 rounded-full"
+              style={{ background: "#FFE28A55" }}
+            />
+            <div className="relative text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-meadow)] px-4 py-1.5 text-sm font-bold text-[color:var(--color-meadow-deep)]">
+                <Sparkles className="h-4 w-4" />
+                Oferta especial de lançamento
+              </span>
+              <h2 className="mt-5 font-display text-3xl font-extrabold sm:text-4xl">
+                Acesso completo ao Jardim de Fé Kids
+              </h2>
+              <p className="mt-3 text-[color:var(--color-ink-soft)]">
+                Um pagamento único. Toda a biblioteca, todos os bônus, para sempre no seu jardim.
+              </p>
+
+              <div className="mt-8 flex flex-col items-center gap-1">
+                <span className="text-[color:var(--color-ink-soft)] line-through">
+                  De R$ 197,00
+                </span>
+                <div className="flex items-end gap-2">
+                  <span className="font-display text-2xl font-bold text-[color:var(--color-ink)]">R$</span>
+                  <span className="font-display text-6xl font-extrabold text-[color:var(--color-primary)]">
+                    47
+                  </span>
+                  <span className="font-display text-2xl font-bold text-[color:var(--color-ink)]">,00</span>
+                </div>
+                <span className="text-sm text-[color:var(--color-ink-soft)]">
+                  ou 5x de R$ 9,90 sem juros
+                </span>
+              </div>
+
+              <div className="mt-8 flex flex-col items-center gap-3">
+                <CTAButton>Quero o meu Jardim de Fé</CTAButton>
+                <span className="flex items-center gap-2 text-sm text-[color:var(--color-ink-soft)]">
+                  <ShieldCheck className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
+                  7 dias de garantia incondicional
+                </span>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+const TESTIMONIALS = [
+  {
+    name: "Camila R.",
+    role: "Mãe do Théo, 4 anos",
+    text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
+  },
+  {
+    name: "Dona Zilda",
+    role: "Avó de 3 netinhos",
+    text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
+  },
+  {
+    name: "Prof. Márcia",
+    role: "Escola dominical",
+    text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
+  },
+];
+
+function Social() {
+  return (
+    <section className="bg-white py-20">
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
+              Famílias contando o que aconteceu em casa
+            </h2>
+            <p className="mt-3 text-[color:var(--color-ink-soft)]">
+              Milhares de pais, avós e professores já plantaram esse jardim.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <Reveal key={t.name} delay={i * 80}>
+              <div className="soft-card h-full">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, k) => (
+                    <Star
+                      key={k}
+                      className="h-4 w-4 text-[color:var(--color-sunshine-deep)]"
+                      fill="currentColor"
+                    />
+                  ))}
+                </div>
+                <p className="mt-3 text-[color:var(--color-ink)]">"{t.text}"</p>
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--color-sky-soft)]">
+                    <Heart
+                      className="h-4 w-4 text-[color:var(--color-primary)]"
+                      fill="currentColor"
+                    />
+                  </div>
+                  <div>
+                    <div className="font-display font-bold">{t.name}</div>
+                    <div className="text-sm text-[color:var(--color-ink-soft)]">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const FAQS = [
+  {
+    q: "A partir de que idade meu filho pode usar?",
+    a: "O Jardim de Fé Kids foi pensado para crianças de 2 a 10 anos, com histórias e atividades adaptáveis a cada fase.",
+  },
+  {
+    q: "Como funciona o acesso?",
+    a: "Após a compra, você recebe imediatamente por e-mail os dados para acessar todo o conteúdo em qualquer dispositivo.",
+  },
+  {
+    q: "Preciso de conexão constante com a internet?",
+    a: "As histórias e áudios podem ser baixados no seu aparelho, para acesso mesmo sem internet, quando quiser.",
+  },
+  {
+    q: "E se eu não gostar?",
+    a: "Você tem 7 dias de garantia incondicional. Se não sentir que valeu a pena, devolvemos 100% do valor.",
+  },
+  {
+    q: "Serve para escola dominical ou ministério infantil?",
+    a: "Sim! Muitos professores e ministérios já usam o material para enriquecer suas aulas com carinho.",
+  },
+];
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="soft-card">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-4 text-left"
+        aria-expanded={open}
+      >
+        <span className="font-display text-lg font-bold text-[color:var(--color-ink)]">{q}</span>
+        <ChevronDown
+          className={`h-5 w-5 shrink-0 text-[color:var(--color-primary)] transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      <div
+        className="grid transition-all duration-300"
+        style={{
+          gridTemplateRows: open ? "1fr" : "0fr",
+          opacity: open ? 1 : 0,
+          marginTop: open ? "0.75rem" : 0,
+        }}
+      >
+        <div className="overflow-hidden text-[color:var(--color-ink-soft)]">{a}</div>
+      </div>
+    </div>
+  );
+}
+
+function FAQ() {
+  return (
+    <section className="py-20" style={{ background: "#FBF9F0" }}>
+      <div className="mx-auto max-w-3xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
+              Perguntas frequentes
+            </h2>
+            <p className="mt-3 text-[color:var(--color-ink-soft)]">
+              Feitas por outras famílias que também queriam começar essa jornada.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-10 grid gap-4">
+          {FAQS.map((f, i) => (
+            <Reveal key={f.q} delay={i * 50}>
+              <FAQItem q={f.q} a={f.a} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCTA() {
+  return (
+    <section className="relative overflow-hidden py-20" style={{ background: "#DFF4FF" }}>
+      <FloatingCloud className="top-6 left-0" size={110} duration={120} opacity={0.7} />
+      <FloatingCloud className="bottom-6 left-0" size={90} duration={140} reverse opacity={0.6} />
+      <TinyStar className="absolute right-12 top-10 h-4 w-4" />
+      <TinyStar className="absolute left-16 bottom-12 h-3 w-3" />
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <Reveal>
+          <Cloud className="mx-auto h-12 w-12 text-white drop-shadow-md" fill="white" strokeWidth={1.2} />
+          <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-5xl">
+            Deixe a fé florescer no coração dos seus pequenos
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-[color:var(--color-ink-soft)]">
+            Um jardim de histórias, orações e músicas esperando pela sua família — hoje mesmo.
+          </p>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <CTAButton>Começar agora meu Jardim de Fé</CTAButton>
+            <span className="text-sm text-[color:var(--color-ink-soft)]">
+              Pagamento 100% seguro • Acesso imediato
+            </span>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-white pb-10 pt-16">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <div className="flex items-center gap-2">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--color-sky-soft)]">
+              <TreePine className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
+            </div>
+            <span className="font-display text-xl font-bold">
+              Jardim de Fé <span className="text-[color:var(--color-primary)]">Kids</span>
+            </span>
+          </div>
+          <p className="max-w-md text-sm text-[color:var(--color-ink-soft)]">
+            "Instrui o menino no caminho em que deve andar, e mesmo quando envelhecer não se
+            desviará dele." — Provérbios 22:6
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-[color:var(--color-ink-soft)]">
+            <a href="#" className="hover:text-[color:var(--color-primary)]">Termos</a>
+            <a href="#" className="hover:text-[color:var(--color-primary)]">Privacidade</a>
+            <a href="#" className="hover:text-[color:var(--color-primary)]">Contato</a>
+          </div>
+          <div className="mt-6 text-xs text-[color:var(--color-ink-soft)]">
+            © {new Date().getFullYear()} Jardim de Fé Kids — Feito com muito amor 🌿
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function LandingPage() {
+  return (
+    <main className="min-h-screen overflow-x-hidden">
+      <Hero />
+      <Demo />
+      <Benefits />
+      <Urgency />
+      <IdealFor />
+      <WhatYouGet />
+      <Bonuses />
+      <Offer />
+      <Social />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
+    </main>
   );
 }

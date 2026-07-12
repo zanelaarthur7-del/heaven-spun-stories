@@ -520,16 +520,19 @@ const TESTIMONIALS = [
     name: "Camila R.",
     role: "Mãe do Théo, 4 anos",
     text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
+    avatar: avatar1,
   },
   {
     name: "Dona Zilda",
     role: "Avó de 3 netinhos",
     text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
+    avatar: avatar2,
   },
   {
     name: "Prof. Márcia",
     role: "Escola dominical",
     text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
+    avatar: avatar3,
   },
 ];
 
@@ -562,12 +565,14 @@ function Social() {
                 </div>
                 <p className="mt-3 text-[color:var(--color-ink)]">"{t.text}"</p>
                 <div className="mt-5 flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-[color:var(--color-sky-soft)]">
-                    <Heart
-                      className="h-4 w-4 text-[color:var(--color-primary)]"
-                      fill="currentColor"
-                    />
-                  </div>
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    width={512}
+                    height={512}
+                    loading="lazy"
+                    className="h-12 w-12 rounded-full object-cover shadow-[var(--shadow-card)]"
+                  />
                   <div>
                     <div className="font-display font-bold">{t.name}</div>
                     <div className="text-sm text-[color:var(--color-ink-soft)]">{t.role}</div>
@@ -679,6 +684,9 @@ function Bonuses() {
               </Reveal>
             );
           })}
+        </div>
+        <div className="mt-12 flex justify-center">
+          <CTAButton>Quero garantir meus bônus</CTAButton>
         </div>
       </div>
     </section>

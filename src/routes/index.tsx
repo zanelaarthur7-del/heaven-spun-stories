@@ -875,6 +875,3 @@ function LandingPage() {
   );
 }
 
-<Bird className="hidden" />
-<Cloud className="hidden" />
-<Feather className="hidden" />

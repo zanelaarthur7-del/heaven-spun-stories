@@ -215,12 +215,10 @@ function Hero() {
         </Reveal>
       </div>
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center">
-        <p className="mb-6 text-lg text-[color:var(--color-ink-soft)]">
-          Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador.
-        </p>
+      <div className="mx-auto flex max-w-3xl justify-center px-6 pb-16">
         <CTAButton>Começar a jornada de fé</CTAButton>
       </div>
+
 
       <SectionDivider color="white" />
     </section>
@@ -590,45 +588,6 @@ function Social() {
   );
 }
 
-const RECEIVES = [
-  "365 parábolas bíblicas ilustradas (uma para cada dia do ano)",
-  "Devocional guiado para a hora de dormir",
-  "Biblioteca de canções cristãs infantis suaves",
-  "Atividades imprimíveis para colorir e memorizar",
-  "Roteiros de oração em família para todas as idades",
-  "Atualizações constantes com novas histórias e músicas",
-];
-
-function WhatYouGet() {
-  return (
-    <section className="relative py-20" style={{ background: "#FBF9F0" }}>
-      <div className="mx-auto max-w-5xl px-6">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
-              O que você recebe
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
-              Tudo o que você precisa para criar um momento de fé em família, todos os dias, sem precisar preparar nada.
-            </h2>
-          </div>
-        </Reveal>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {RECEIVES.map((r, i) => (
-            <Reveal key={r} delay={i * 40}>
-              <div className="flex items-start gap-3 rounded-2xl bg-white p-5 shadow-[var(--shadow-card)]">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[color:var(--color-meadow)]">
-                  <Check className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
-                </div>
-                <p className="pt-0.5 text-[color:var(--color-ink)]">{r}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const BONUSES = [
   {
@@ -723,44 +682,24 @@ function Offer() {
                 Acesso completo ao Jardim de Fé Kids
               </h2>
               <p className="mt-3 text-[color:var(--color-ink-soft)]">
-                Um pagamento único. Toda a biblioteca, todos os bônus, para sempre no seu jardim.
+                Um pagamento único. Toda a biblioteca, todos os bônus e todas as futuras atualizações para sua família.
               </p>
 
-              <div className="mt-8 w-full max-w-md rounded-2xl bg-[color:var(--color-sky-soft)] p-6 text-left">
-                <p className="mb-4 font-display text-lg font-bold text-[color:var(--color-ink)]">
-                  Você recebe acesso completo e vitalício a todo o conteúdo abaixo:
-                </p>
-                <ul className="space-y-3 text-[color:var(--color-ink-soft)]">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>365 histórias bíblicas ilustradas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Devocional guiado</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Biblioteca de músicas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Atividades para imprimir</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Roteiros de oração</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Todas as atualizações futuras</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>🎁</span>
-                    <span>Todos os bônus inclusos</span>
-                  </li>
-                </ul>
+              <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 text-left">
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Acesso vitalício</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Todos os bônus inclusos</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Acesso imediato</span>
+                </div>
               </div>
+
 
               <div className="mt-8 flex flex-col items-center gap-1">
                 <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
@@ -856,15 +795,8 @@ const FAQS = [
     q: "Funciona no celular? Preciso instalar algum aplicativo?",
     a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
   },
-  {
-    q: "E se eu não gostar?",
-    a: "Você tem 7 dias de garantia incondicional. Se não sentir que valeu a pena, devolvemos 100% do valor.",
-  },
-  {
-    q: "Serve para escola dominical ou ministério infantil?",
-    a: "Sim! Muitos professores e ministérios já usam o material para enriquecer suas aulas com carinho.",
-  },
 ];
+
 
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -965,13 +897,12 @@ function LandingPage() {
       <Sample />
       <Benefits />
       <Social />
-      <WhatYouGet />
-      <Bonuses />
-      <Offer />
       <EmotionalBeforeGuarantee />
+      <Offer />
       <Guarantee />
       <FAQ />
       <Footer />
+
     </main>
   );
 }

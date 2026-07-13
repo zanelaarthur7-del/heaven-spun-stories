@@ -215,12 +215,10 @@ function Hero() {
         </Reveal>
       </div>
 
-      <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center">
-        <p className="mb-6 text-lg text-[color:var(--color-ink-soft)]">
-          Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador.
-        </p>
+      <div className="mx-auto flex max-w-3xl justify-center px-6 pb-16">
         <CTAButton>Começar a jornada de fé</CTAButton>
       </div>
+
 
       <SectionDivider color="white" />
     </section>

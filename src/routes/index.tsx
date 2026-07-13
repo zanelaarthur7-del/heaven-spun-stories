@@ -682,44 +682,24 @@ function Offer() {
                 Acesso completo ao Jardim de Fé Kids
               </h2>
               <p className="mt-3 text-[color:var(--color-ink-soft)]">
-                Um pagamento único. Toda a biblioteca, todos os bônus, para sempre no seu jardim.
+                Um pagamento único. Toda a biblioteca, todos os bônus e todas as futuras atualizações para sua família.
               </p>
 
-              <div className="mt-8 w-full max-w-md rounded-2xl bg-[color:var(--color-sky-soft)] p-6 text-left">
-                <p className="mb-4 font-display text-lg font-bold text-[color:var(--color-ink)]">
-                  Você recebe acesso completo e vitalício a todo o conteúdo abaixo:
-                </p>
-                <ul className="space-y-3 text-[color:var(--color-ink-soft)]">
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>365 histórias bíblicas ilustradas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Devocional guiado</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Biblioteca de músicas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Atividades para imprimir</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Roteiros de oração</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
-                    <span>Todas as atualizações futuras</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>🎁</span>
-                    <span>Todos os bônus inclusos</span>
-                  </li>
-                </ul>
+              <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 text-left">
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Acesso vitalício</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Todos os bônus inclusos</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3">
+                  <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                  <span className="font-semibold text-[color:var(--color-ink)]">Acesso imediato</span>
+                </div>
               </div>
+
 
               <div className="mt-8 flex flex-col items-center gap-1">
                 <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">

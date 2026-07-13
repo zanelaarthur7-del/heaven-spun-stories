@@ -205,7 +205,7 @@ function Hero() {
             />
             <img
               src={heroProduct}
-              alt="365 Parábolas Kids — livro ilustrado com bônus, aplicativo e materiais para impressão"
+              alt="Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador."
               width={1600}
               height={900}
               className="mx-auto w-full max-w-xl rounded-[1.5rem] drop-shadow-[0_20px_40px_rgba(60,110,180,0.25)]"
@@ -215,7 +215,10 @@ function Hero() {
         </Reveal>
       </div>
 
-      <div className="mx-auto flex max-w-6xl justify-center px-6 pb-16">
+      <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center">
+        <p className="mb-6 text-lg text-[color:var(--color-ink-soft)]">
+          Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador.
+        </p>
         <CTAButton>Começar a jornada de fé</CTAButton>
       </div>
 
@@ -478,10 +481,10 @@ function Benefits() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
-              Tudo o que uma família precisa para ensinar a fé com leveza
+              Tudo o que você recebe no Jardim de Fé Kids
             </h2>
             <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
-              Ferramentas simples, criadas com carinho para os corações que estão apenas começando.
+              Assim que o pagamento for aprovado, sua família recebe acesso imediato a todo o conteúdo abaixo:
             </p>
           </div>
         </Reveal>
@@ -723,6 +726,42 @@ function Offer() {
                 Um pagamento único. Toda a biblioteca, todos os bônus, para sempre no seu jardim.
               </p>
 
+              <div className="mt-8 w-full max-w-md rounded-2xl bg-[color:var(--color-sky-soft)] p-6 text-left">
+                <p className="mb-4 font-display text-lg font-bold text-[color:var(--color-ink)]">
+                  Você recebe acesso completo e vitalício a todo o conteúdo abaixo:
+                </p>
+                <ul className="space-y-3 text-[color:var(--color-ink-soft)]">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>365 histórias bíblicas ilustradas</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>Devocional guiado</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>Biblioteca de músicas</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>Atividades para imprimir</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>Roteiros de oração</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--color-meadow-deep)]">✅</span>
+                    <span>Todas as atualizações futuras</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span>🎁</span>
+                    <span>Todos os bônus inclusos</span>
+                  </li>
+                </ul>
+              </div>
+
               <div className="mt-8 flex flex-col items-center gap-1">
                 <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
                   Hoje por apenas
@@ -748,6 +787,23 @@ function Offer() {
               </div>
             </div>
           </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function EmotionalBeforeGuarantee() {
+  return (
+    <section className="relative bg-white py-16">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <Reveal>
+          <p className="font-display text-2xl font-bold leading-relaxed text-[color:var(--color-ink)] sm:text-3xl">
+            Os brinquedos passam. As roupas ficam pequenas. Mas os momentos vividos ao lado dos pais permanecem para sempre no coração de uma criança.
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
+            Reserve apenas 3 minutos por dia para plantar sementes de fé que podem acompanhar seu filho por toda a vida.
+          </p>
         </Reveal>
       </div>
     </section>
@@ -786,15 +842,19 @@ function Guarantee() {
 const FAQS = [
   {
     q: "Meu filho não gosta de ler. Mesmo assim funciona?",
-    a: "O Jardim de Fé Kids foi pensado para crianças de 2 a 10 anos, com histórias e atividades adaptáveis a cada fase.",
+    a: "Sim! As histórias são curtas, ilustradas e feitas para prender a atenção das crianças. Além disso, você pode ler junto com seu filho em apenas 3 minutos por dia, tornando esse momento leve, divertido e especial.",
   },
   {
     q: "Sou católico. Posso usar?",
-    a: "Após a compra, você recebe imediatamente por e-mail os dados para acessar todo o conteúdo em qualquer dispositivo.",
+    a: "Sim. O Jardim de Fé Kids foi criado para todas as famílias cristãs que desejam ensinar a Palavra de Deus às crianças com amor, respeito e linguagem simples.",
   },
   {
-    q: "\n",
-    a: "As histórias e áudios podem ser baixados no seu aparelho, para acesso mesmo sem internet, quando quiser.",
+    q: "Recebo o acesso imediatamente?",
+    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a usar o Jardim de Fé Kids no celular, tablet ou computador.",
+  },
+  {
+    q: "Funciona no celular? Preciso instalar algum aplicativo?",
+    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
   },
   {
     q: "E se eu não gostar?",
@@ -908,6 +968,7 @@ function LandingPage() {
       <WhatYouGet />
       <Bonuses />
       <Offer />
+      <EmotionalBeforeGuarantee />
       <Guarantee />
       <FAQ />
       <Footer />

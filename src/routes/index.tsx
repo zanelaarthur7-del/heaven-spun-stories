@@ -795,15 +795,8 @@ const FAQS = [
     q: "Funciona no celular? Preciso instalar algum aplicativo?",
     a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
   },
-  {
-    q: "E se eu não gostar?",
-    a: "Você tem 7 dias de garantia incondicional. Se não sentir que valeu a pena, devolvemos 100% do valor.",
-  },
-  {
-    q: "Serve para escola dominical ou ministério infantil?",
-    a: "Sim! Muitos professores e ministérios já usam o material para enriquecer suas aulas com carinho.",
-  },
 ];
+
 
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);

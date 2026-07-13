@@ -968,6 +968,7 @@ function LandingPage() {
       <WhatYouGet />
       <Bonuses />
       <Offer />
+      <EmotionalBeforeGuarantee />
       <Guarantee />
       <FAQ />
       <Footer />

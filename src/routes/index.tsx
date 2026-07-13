@@ -924,13 +924,12 @@ function LandingPage() {
       <Sample />
       <Benefits />
       <Social />
-      <WhatYouGet />
-      <Bonuses />
-      <Offer />
       <EmotionalBeforeGuarantee />
+      <Offer />
       <Guarantee />
       <FAQ />
       <Footer />
+
     </main>
   );
 }

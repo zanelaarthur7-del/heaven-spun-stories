@@ -588,45 +588,6 @@ function Social() {
   );
 }
 
-const RECEIVES = [
-  "365 parábolas bíblicas ilustradas (uma para cada dia do ano)",
-  "Devocional guiado para a hora de dormir",
-  "Biblioteca de canções cristãs infantis suaves",
-  "Atividades imprimíveis para colorir e memorizar",
-  "Roteiros de oração em família para todas as idades",
-  "Atualizações constantes com novas histórias e músicas",
-];
-
-function WhatYouGet() {
-  return (
-    <section className="relative py-20" style={{ background: "#FBF9F0" }}>
-      <div className="mx-auto max-w-5xl px-6">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-sm font-semibold uppercase tracking-widest text-[color:var(--color-primary)]">
-              O que você recebe
-            </span>
-            <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
-              Tudo o que você precisa para criar um momento de fé em família, todos os dias, sem precisar preparar nada.
-            </h2>
-          </div>
-        </Reveal>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {RECEIVES.map((r, i) => (
-            <Reveal key={r} delay={i * 40}>
-              <div className="flex items-start gap-3 rounded-2xl bg-white p-5 shadow-[var(--shadow-card)]">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[color:var(--color-meadow)]">
-                  <Check className="h-5 w-5 text-[color:var(--color-meadow-deep)]" />
-                </div>
-                <p className="pt-0.5 text-[color:var(--color-ink)]">{r}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const BONUSES = [
   {

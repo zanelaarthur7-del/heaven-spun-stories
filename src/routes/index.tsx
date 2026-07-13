@@ -842,15 +842,19 @@ function Guarantee() {
 const FAQS = [
   {
     q: "Meu filho não gosta de ler. Mesmo assim funciona?",
-    a: "O Jardim de Fé Kids foi pensado para crianças de 2 a 10 anos, com histórias e atividades adaptáveis a cada fase.",
+    a: "Sim! As histórias são curtas, ilustradas e feitas para prender a atenção das crianças. Além disso, você pode ler junto com seu filho em apenas 3 minutos por dia, tornando esse momento leve, divertido e especial.",
   },
   {
     q: "Sou católico. Posso usar?",
-    a: "Após a compra, você recebe imediatamente por e-mail os dados para acessar todo o conteúdo em qualquer dispositivo.",
+    a: "Sim. O Jardim de Fé Kids foi criado para todas as famílias cristãs que desejam ensinar a Palavra de Deus às crianças com amor, respeito e linguagem simples.",
   },
   {
-    q: "\n",
-    a: "As histórias e áudios podem ser baixados no seu aparelho, para acesso mesmo sem internet, quando quiser.",
+    q: "Recebo o acesso imediatamente?",
+    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a usar o Jardim de Fé Kids no celular, tablet ou computador.",
+  },
+  {
+    q: "Funciona no celular? Preciso instalar algum aplicativo?",
+    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
   },
   {
     q: "E se eu não gostar?",

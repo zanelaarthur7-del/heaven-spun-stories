@@ -205,7 +205,7 @@ function Hero() {
             />
             <img
               src={heroProduct}
-              alt="365 Parábolas Kids — livro ilustrado com bônus, aplicativo e materiais para impressão"
+              alt="Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador."
               width={1600}
               height={900}
               className="mx-auto w-full max-w-xl rounded-[1.5rem] drop-shadow-[0_20px_40px_rgba(60,110,180,0.25)]"
@@ -215,7 +215,10 @@ function Hero() {
         </Reveal>
       </div>
 
-      <div className="mx-auto flex max-w-6xl justify-center px-6 pb-16">
+      <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-6 pb-16 text-center">
+        <p className="mb-6 text-lg text-[color:var(--color-ink-soft)]">
+          Acesso imediato à plataforma online + livro digital ilustrado + atividades para imprimir + músicas cristãs infantis. Tudo pelo celular, tablet ou computador.
+        </p>
         <CTAButton>Começar a jornada de fé</CTAButton>
       </div>
 
@@ -478,10 +481,10 @@ function Benefits() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
-              Tudo o que uma família precisa para ensinar a fé com leveza
+              Tudo o que você recebe no Jardim de Fé Kids
             </h2>
             <p className="mt-4 text-lg text-[color:var(--color-ink-soft)]">
-              Ferramentas simples, criadas com carinho para os corações que estão apenas começando.
+              Assim que o pagamento for aprovado, sua família recebe acesso imediato a todo o conteúdo abaixo:
             </p>
           </div>
         </Reveal>

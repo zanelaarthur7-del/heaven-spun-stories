@@ -83,13 +83,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Um jardim digital de fé para plantar o amor de Deus no coração dos pequenos. Histórias bíblicas ilustradas, atividades e devocionais em família.",
       },
-      { property: "og:title", content: "Jardim de Fé Kids" },
+      { property: "og:title", content: "Jardim de Fé Kids — Fé, acolhimento e histórias bíblicas para crianças" },
       {
         property: "og:description",
-        content: "Fé, carinho e infância em um só lugar — histórias bíblicas ilustradas para crianças.",
+        content: "Um jardim digital de fé para plantar o amor de Deus no coração dos pequenos. Histórias bíblicas ilustradas, atividades e devocionais em família.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Jardim de Fé Kids — Fé, acolhimento e histórias bíblicas para crianças" },
+      { name: "twitter:description", content: "Um jardim digital de fé para plantar o amor de Deus no coração dos pequenos. Histórias bíblicas ilustradas, atividades e devocionais em família." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/eea5617b-306b-4fbb-948c-30a7e498ca63" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/eea5617b-306b-4fbb-948c-30a7e498ca63" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

@@ -790,20 +790,24 @@ function Guarantee() {
 
 const FAQS = [
   {
-    q: "Meu filho não gosta de ler. Mesmo assim funciona?",
-    a: "Sim! As histórias são curtas, ilustradas e feitas para prender a atenção das crianças. Além disso, você pode ler junto com seu filho em apenas 3 minutos por dia, tornando esse momento leve, divertido e especial.",
+    q: "Serve para crianças que estão fazendo catequese?",
+    a: "Sim! O Jardim de Fé Kids é um ótimo apoio para a catequese. As parábolas, orações e atividades ajudam a criança a compreender melhor os ensinamentos que recebe na paróquia, de forma leve, ilustrada e fácil de acompanhar em casa.",
   },
   {
-    q: "Sou católico. Posso usar?",
-    a: "Sim. O Jardim de Fé Kids foi criado para todas as famílias cristãs que desejam ensinar a Palavra de Deus às crianças com amor, respeito e linguagem simples.",
+    q: "Posso usar mesmo que meu filho ainda seja pequeno?",
+    a: "Sim. A linguagem é simples e carinhosa, pensada para crianças a partir dos 3 anos. Você lê junto por apenas 3 minutos e a ilustração encanta os pequenos, mesmo os que ainda não sabem ler.",
   },
   {
     q: "Recebo o acesso imediatamente?",
-    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a usar o Jardim de Fé Kids no celular, tablet ou computador.",
+    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a viver esse momento com a sua família.",
   },
   {
     q: "Funciona no celular? Preciso instalar algum aplicativo?",
-    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
+    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a usar.",
+  },
+  {
+    q: "Posso usar durante a preparação para a Primeira Comunhão?",
+    a: "Com certeza. As parábolas, orações e reflexões ajudam a criança a se aproximar de Jesus e da Eucaristia, complementando muito bem a preparação para a Primeira Comunhão feita na paróquia.",
   },
 ];
 

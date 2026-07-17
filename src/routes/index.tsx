@@ -19,6 +19,10 @@ import {
   Clock,
   Palette,
   BookMarked,
+  Cross,
+  Leaf,
+  Feather,
+  Church,
 } from "lucide-react";
 
 import heroProduct from "@/assets/hero-product.jpg";
@@ -181,19 +185,25 @@ function Hero() {
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
               Transforme apenas 3 minutos antes de dormir no momento mais importante do dia do seu filho.
             </h1>
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-sunshine-deep)]/30 bg-[color:var(--color-sunshine)]/40 px-4 py-1.5 text-sm font-semibold text-[color:var(--color-ink)]">
+                🙏 Inspirado nos valores da fé católica
+              </span>
+            </div>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
-              Jardim de Fé Kids reúne 365 histórias bíblicas ilustradas, versículos, músicas e atividades para ajudar sua família a ensinar a Palavra de Deus de forma leve e inesquecível.
+              Jardim de Fé Kids ajuda pais, mães, avós e catequistas a ensinar a fé católica de forma simples, carinhosa e diária — antes de dormir. Reúne 365 parábolas ilustradas, orações, músicas e atividades para viver a Palavra de Deus em família.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm text-[color:var(--color-ink-soft)] lg:justify-start">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
-                Conteúdo 100% cristão
+                <Cross className="h-4 w-4 text-[color:var(--color-primary)]" />
+                Fiel à tradição católica
               </div>
               <div className="flex items-center gap-1.5">
                 <Heart className="h-4 w-4 text-[color:var(--color-primary)]" fill="currentColor" />
                 Feito para toda a família
               </div>
             </div>
+
           </div>
         </Reveal>
 
@@ -518,21 +528,21 @@ function Benefits() {
 
 const TESTIMONIALS = [
   {
-    name: "Camila R.",
-    role: "Mãe do Théo, 4 anos",
-    text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
+    name: "Juliana",
+    role: "Mãe de duas crianças",
+    text: "Começamos a ler uma parábola todas as noites antes de dormir. Hoje meus filhos já pedem para rezarmos juntos e esperam ansiosos pelo nosso momento com Deus.",
     avatar: avatar1,
   },
   {
-    name: "Dona Zilda",
-    role: "Avó de 3 netinhos",
-    text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
+    name: "Fernanda",
+    role: "Catequista",
+    text: "Uso algumas histórias durante a catequese e as crianças ficam encantadas. É um material muito bonito e fácil de entender.",
     avatar: avatar2,
   },
   {
-    name: "Prof. Márcia",
-    role: "Escola dominical",
-    text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
+    name: "Márcia",
+    role: "Avó",
+    text: "Queria aproximar meus netos da fé católica de uma forma leve. Esse material trouxe momentos muito especiais para nossa família.",
     avatar: avatar3,
   },
 ];
@@ -602,8 +612,8 @@ const BONUSES = [
   },
   {
     icon: Music,
-    title: "Playlist de Louvor Infantil",
-    text: "Uma seleção de músicas cristãs leves pra tocar durante o momento de leitura.",
+    title: "Playlist de Louvor Católico Infantil",
+    text: "Uma seleção de músicas católicas leves pra tocar durante o momento de leitura e oração.",
   },
 ];
 
@@ -780,20 +790,24 @@ function Guarantee() {
 
 const FAQS = [
   {
-    q: "Meu filho não gosta de ler. Mesmo assim funciona?",
-    a: "Sim! As histórias são curtas, ilustradas e feitas para prender a atenção das crianças. Além disso, você pode ler junto com seu filho em apenas 3 minutos por dia, tornando esse momento leve, divertido e especial.",
+    q: "Serve para crianças que estão fazendo catequese?",
+    a: "Sim! O Jardim de Fé Kids é um ótimo apoio para a catequese. As parábolas, orações e atividades ajudam a criança a compreender melhor os ensinamentos que recebe na paróquia, de forma leve, ilustrada e fácil de acompanhar em casa.",
   },
   {
-    q: "Sou católico. Posso usar?",
-    a: "Sim. O Jardim de Fé Kids foi criado para todas as famílias cristãs que desejam ensinar a Palavra de Deus às crianças com amor, respeito e linguagem simples.",
+    q: "Posso usar mesmo que meu filho ainda seja pequeno?",
+    a: "Sim. A linguagem é simples e carinhosa, pensada para crianças a partir dos 3 anos. Você lê junto por apenas 3 minutos e a ilustração encanta os pequenos, mesmo os que ainda não sabem ler.",
   },
   {
     q: "Recebo o acesso imediatamente?",
-    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a usar o Jardim de Fé Kids no celular, tablet ou computador.",
+    a: "Sim! Assim que o pagamento for aprovado, você recebe o acesso automaticamente por e-mail e já pode começar a viver esse momento com a sua família.",
   },
   {
     q: "Funciona no celular? Preciso instalar algum aplicativo?",
-    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a viver esse momento especial com sua família.",
+    a: "Sim. Você pode acessar todo o conteúdo pelo celular, tablet ou computador. Não é necessário instalar nada: basta entrar na plataforma e começar a usar.",
+  },
+  {
+    q: "Posso usar durante a preparação para a Primeira Comunhão?",
+    a: "Com certeza. As parábolas, orações e reflexões ajudam a criança a se aproximar de Jesus e da Eucaristia, complementando muito bem a preparação para a Primeira Comunhão feita na paróquia.",
   },
 ];
 
@@ -888,6 +902,109 @@ function Footer() {
   );
 }
 
+function CatholicFamilies() {
+  const cards = [
+    { icon: Church, title: "Fortalece a fé desde a infância", emoji: "⛪" },
+    { icon: Heart, title: "Incentiva a oração em família", emoji: "🙏" },
+    { icon: BookOpen, title: "Ensina a Palavra de Deus com linguagem infantil", emoji: "📖" },
+    { icon: Sparkles, title: "Desenvolve valores como amor, respeito, perdão e gratidão", emoji: "❤️" },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-white py-20">
+      <Leaf
+        aria-hidden
+        className="absolute left-6 top-10 h-10 w-10 -rotate-12 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Leaf
+        aria-hidden
+        className="absolute right-8 bottom-10 h-12 w-12 rotate-45 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Feather
+        aria-hidden
+        className="absolute right-[12%] top-8 h-8 w-8 text-[color:var(--color-primary)]/30"
+      />
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[color:var(--color-sky-soft)] px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+              <Cross className="h-4 w-4" />
+              Criado para famílias católicas
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
+              Um jardim de fé plantado dentro de casa
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
+              Vivemos em um mundo cheio de distrações. O Jardim de Fé Kids foi criado para ajudar
+              famílias católicas a cultivar, desde cedo, o amor a Deus, o hábito da oração e os
+              ensinamentos de Jesus dentro de casa.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <Reveal key={c.title} delay={i * 70}>
+                <div className="soft-card h-full text-center">
+                  <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[color:var(--color-sunshine)]">
+                    <Icon className="h-7 w-7 text-[color:var(--color-primary)]" />
+                  </div>
+                  <div className="mt-3 text-2xl" aria-hidden>{c.emoji}</div>
+                  <h3 className="mt-2 font-display text-base font-bold leading-snug">{c.title}</h3>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MoreThanStories() {
+  const items = [
+    "Mais de 200 parábolas ilustradas",
+    "Orações simples para crianças",
+    "Atividades educativas",
+    "Acesso imediato",
+  ];
+  return (
+    <section className="relative overflow-hidden bg-white py-16">
+      <Leaf
+        aria-hidden
+        className="absolute left-10 top-8 h-10 w-10 -rotate-12 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Cross
+        aria-hidden
+        className="absolute right-10 top-10 h-8 w-8 text-[color:var(--color-primary)]/30"
+      />
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-meadow)] px-4 py-1.5 text-sm font-bold text-[color:var(--color-meadow-deep)]">
+            <Sparkles className="h-4 w-4" />
+            Mais do que histórias...
+          </span>
+          <p className="mx-auto mt-5 max-w-2xl font-display text-2xl font-bold leading-relaxed text-[color:var(--color-ink)] sm:text-3xl">
+            "O Jardim de Fé Kids ajuda sua família a criar um pequeno hábito diário que pode
+            acompanhar seu filho por toda a vida."
+          </p>
+          <div className="mx-auto mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {items.map((t) => (
+              <div
+                key={t}
+                className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3 text-left"
+              >
+                <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                <span className="font-semibold text-[color:var(--color-ink)]">{t}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function LandingPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
@@ -896,8 +1013,10 @@ function LandingPage() {
       <Method />
       <Sample />
       <Benefits />
+      <CatholicFamilies />
       <Social />
       <EmotionalBeforeGuarantee />
+      <MoreThanStories />
       <Offer />
       <Guarantee />
       <FAQ />
@@ -906,4 +1025,5 @@ function LandingPage() {
     </main>
   );
 }
+
 

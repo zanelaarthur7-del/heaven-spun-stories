@@ -528,21 +528,21 @@ function Benefits() {
 
 const TESTIMONIALS = [
   {
-    name: "Camila R.",
-    role: "Mãe do Théo, 4 anos",
-    text: "Virou o momento mais esperado do dia. Meu filho dorme sorrindo e pedindo bênção.",
+    name: "Juliana",
+    role: "Mãe de duas crianças",
+    text: "Começamos a ler uma parábola todas as noites antes de dormir. Hoje meus filhos já pedem para rezarmos juntos e esperam ansiosos pelo nosso momento com Deus.",
     avatar: avatar1,
   },
   {
-    name: "Dona Zilda",
-    role: "Avó de 3 netinhos",
-    text: "Encontrei aqui o que eu sonhava para dividir com meus netos. É lindo demais.",
+    name: "Fernanda",
+    role: "Catequista",
+    text: "Uso algumas histórias durante a catequese e as crianças ficam encantadas. É um material muito bonito e fácil de entender.",
     avatar: avatar2,
   },
   {
-    name: "Prof. Márcia",
-    role: "Escola dominical",
-    text: "As ilustrações e as músicas encantam as crianças. Uma verdadeira bênção.",
+    name: "Márcia",
+    role: "Avó",
+    text: "Queria aproximar meus netos da fé católica de uma forma leve. Esse material trouxe momentos muito especiais para nossa família.",
     avatar: avatar3,
   },
 ];

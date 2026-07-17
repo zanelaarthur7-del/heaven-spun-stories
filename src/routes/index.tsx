@@ -966,7 +966,7 @@ function LandingPage() {
       <Benefits />
       <CatholicFamilies />
       <Social />
-      <EmotionalBeforeGuarantee />
+      
       <MoreThanStories />
       <Offer />
       <Guarantee />

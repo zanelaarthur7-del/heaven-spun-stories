@@ -185,19 +185,25 @@ function Hero() {
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-[color:var(--color-ink)] sm:text-5xl lg:text-6xl">
               Transforme apenas 3 minutos antes de dormir no momento mais importante do dia do seu filho.
             </h1>
+            <div className="mt-4 flex justify-center lg:justify-start">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-sunshine-deep)]/30 bg-[color:var(--color-sunshine)]/40 px-4 py-1.5 text-sm font-semibold text-[color:var(--color-ink)]">
+                🙏 Inspirado nos valores da fé católica
+              </span>
+            </div>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[color:var(--color-ink-soft)] lg:mx-0">
-              Jardim de Fé Kids reúne 365 histórias bíblicas ilustradas, versículos, músicas e atividades para ajudar sua família a ensinar a Palavra de Deus de forma leve e inesquecível.
+              Jardim de Fé Kids ajuda pais, mães, avós e catequistas a ensinar a fé católica de forma simples, carinhosa e diária — antes de dormir. Reúne 365 parábolas ilustradas, orações, músicas e atividades para viver a Palavra de Deus em família.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-5 text-sm text-[color:var(--color-ink-soft)] lg:justify-start">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-[color:var(--color-meadow-deep)]" />
-                Conteúdo 100% cristão
+                <Cross className="h-4 w-4 text-[color:var(--color-primary)]" />
+                Fiel à tradição católica
               </div>
               <div className="flex items-center gap-1.5">
                 <Heart className="h-4 w-4 text-[color:var(--color-primary)]" fill="currentColor" />
                 Feito para toda a família
               </div>
             </div>
+
           </div>
         </Reveal>
 

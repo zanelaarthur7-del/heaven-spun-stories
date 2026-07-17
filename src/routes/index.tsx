@@ -19,6 +19,10 @@ import {
   Clock,
   Palette,
   BookMarked,
+  Cross,
+  Leaf,
+  Feather,
+  Church,
 } from "lucide-react";
 
 import heroProduct from "@/assets/hero-product.jpg";

@@ -902,6 +902,109 @@ function Footer() {
   );
 }
 
+function CatholicFamilies() {
+  const cards = [
+    { icon: Church, title: "Fortalece a fé desde a infância", emoji: "⛪" },
+    { icon: Heart, title: "Incentiva a oração em família", emoji: "🙏" },
+    { icon: BookOpen, title: "Ensina a Palavra de Deus com linguagem infantil", emoji: "📖" },
+    { icon: Sparkles, title: "Desenvolve valores como amor, respeito, perdão e gratidão", emoji: "❤️" },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-white py-20">
+      <Leaf
+        aria-hidden
+        className="absolute left-6 top-10 h-10 w-10 -rotate-12 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Leaf
+        aria-hidden
+        className="absolute right-8 bottom-10 h-12 w-12 rotate-45 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Feather
+        aria-hidden
+        className="absolute right-[12%] top-8 h-8 w-8 text-[color:var(--color-primary)]/30"
+      />
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[color:var(--color-sky-soft)] px-4 py-1.5 text-sm font-semibold text-[color:var(--color-primary)] shadow-[var(--shadow-card)]">
+              <Cross className="h-4 w-4" />
+              Criado para famílias católicas
+            </div>
+            <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
+              Um jardim de fé plantado dentro de casa
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
+              Vivemos em um mundo cheio de distrações. O Jardim de Fé Kids foi criado para ajudar
+              famílias católicas a cultivar, desde cedo, o amor a Deus, o hábito da oração e os
+              ensinamentos de Jesus dentro de casa.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((c, i) => {
+            const Icon = c.icon;
+            return (
+              <Reveal key={c.title} delay={i * 70}>
+                <div className="soft-card h-full text-center">
+                  <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[color:var(--color-sunshine)]">
+                    <Icon className="h-7 w-7 text-[color:var(--color-primary)]" />
+                  </div>
+                  <div className="mt-3 text-2xl" aria-hidden>{c.emoji}</div>
+                  <h3 className="mt-2 font-display text-base font-bold leading-snug">{c.title}</h3>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MoreThanStories() {
+  const items = [
+    "Mais de 200 parábolas ilustradas",
+    "Orações simples para crianças",
+    "Atividades educativas",
+    "Acesso imediato",
+  ];
+  return (
+    <section className="relative overflow-hidden bg-white py-16">
+      <Leaf
+        aria-hidden
+        className="absolute left-10 top-8 h-10 w-10 -rotate-12 text-[color:var(--color-meadow-deep)]/40"
+      />
+      <Cross
+        aria-hidden
+        className="absolute right-10 top-10 h-8 w-8 text-[color:var(--color-primary)]/30"
+      />
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal>
+          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-meadow)] px-4 py-1.5 text-sm font-bold text-[color:var(--color-meadow-deep)]">
+            <Sparkles className="h-4 w-4" />
+            Mais do que histórias...
+          </span>
+          <p className="mx-auto mt-5 max-w-2xl font-display text-2xl font-bold leading-relaxed text-[color:var(--color-ink)] sm:text-3xl">
+            "O Jardim de Fé Kids ajuda sua família a criar um pequeno hábito diário que pode
+            acompanhar seu filho por toda a vida."
+          </p>
+          <div className="mx-auto mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
+            {items.map((t) => (
+              <div
+                key={t}
+                className="flex items-center gap-3 rounded-2xl bg-[color:var(--color-sky-soft)] px-5 py-3 text-left"
+              >
+                <Check className="h-5 w-5 shrink-0 text-[color:var(--color-meadow-deep)]" />
+                <span className="font-semibold text-[color:var(--color-ink)]">{t}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function LandingPage() {
   return (
     <main className="min-h-screen overflow-x-hidden">
@@ -910,8 +1013,10 @@ function LandingPage() {
       <Method />
       <Sample />
       <Benefits />
+      <CatholicFamilies />
       <Social />
       <EmotionalBeforeGuarantee />
+      <MoreThanStories />
       <Offer />
       <Guarantee />
       <FAQ />
@@ -920,4 +1025,5 @@ function LandingPage() {
     </main>
   );
 }
+
 

@@ -612,8 +612,8 @@ const BONUSES = [
   },
   {
     icon: Music,
-    title: "Playlist de Louvor Infantil",
-    text: "Uma seleção de músicas cristãs leves pra tocar durante o momento de leitura.",
+    title: "Playlist de Louvor Católico Infantil",
+    text: "Uma seleção de músicas católicas leves pra tocar durante o momento de leitura e oração.",
   },
 ];
 

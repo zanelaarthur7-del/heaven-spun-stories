@@ -526,25 +526,10 @@ function Benefits() {
   );
 }
 
-const TESTIMONIALS = [
-  {
-    name: "Juliana",
-    role: "Mãe de duas crianças",
-    text: "Começamos a ler uma parábola todas as noites antes de dormir. Hoje meus filhos já pedem para rezarmos juntos e esperam ansiosos pelo nosso momento com Deus.",
-    avatar: avatar1,
-  },
-  {
-    name: "Fernanda",
-    role: "Catequista",
-    text: "Uso algumas histórias durante a catequese e as crianças ficam encantadas. É um material muito bonito e fácil de entender.",
-    avatar: avatar2,
-  },
-  {
-    name: "Márcia",
-    role: "Avó",
-    text: "Queria aproximar meus netos da fé católica de uma forma leve. Esse material trouxe momentos muito especiais para nossa família.",
-    avatar: avatar3,
-  },
+const PROOFS = [
+  { image: proof1.url, alt: "Comprovante de pagamento e mensagem de agradecimento de família católica" },
+  { image: proof2.url, alt: "Mensagem de família agradecendo pelo acesso ao Jardim de Fé Kids" },
+  { image: proof3.url, alt: "Cliente confirmando o recebimento do acesso e agradecendo" },
 ];
 
 function Social() {
@@ -554,41 +539,23 @@ function Social() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
-              Famílias contando o que aconteceu em casa
+              Quem já plantou essa sementinha de fé
             </h2>
             <p className="mt-3 text-[color:var(--color-ink-soft)]">
-              Milhares de pais, avós e professores já plantaram esse jardim.
+              Famílias católicas de todo o Brasil já estão vivendo esse momento especial.
             </p>
           </div>
         </Reveal>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 80}>
-              <div className="soft-card h-full">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, k) => (
-                    <Star
-                      key={k}
-                      className="h-4 w-4 text-[color:var(--color-sunshine-deep)]"
-                      fill="currentColor"
-                    />
-                  ))}
-                </div>
-                <p className="mt-3 text-[color:var(--color-ink)]">"{t.text}"</p>
-                <div className="mt-5 flex items-center gap-3">
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    width={512}
-                    height={512}
-                    loading="lazy"
-                    className="h-12 w-12 rounded-full object-cover shadow-[var(--shadow-card)]"
-                  />
-                  <div>
-                    <div className="font-display font-bold">{t.name}</div>
-                    <div className="text-sm text-[color:var(--color-ink-soft)]">{t.role}</div>
-                  </div>
-                </div>
+          {PROOFS.map((p, i) => (
+            <Reveal key={i} delay={i * 80}>
+              <div className="soft-card h-full overflow-hidden p-3">
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  loading="lazy"
+                  className="w-full rounded-2xl object-contain"
+                />
               </div>
             </Reveal>
           ))}

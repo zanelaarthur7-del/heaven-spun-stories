@@ -709,22 +709,6 @@ function Offer() {
   );
 }
 
-function EmotionalBeforeGuarantee() {
-  return (
-    <section className="relative bg-white py-16">
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <Reveal>
-          <p className="font-display text-2xl font-bold leading-relaxed text-[color:var(--color-ink)] sm:text-3xl">
-            Os brinquedos passam. As roupas ficam pequenas. Mas os momentos vividos ao lado dos pais permanecem para sempre no coração de uma criança.
-          </p>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-[color:var(--color-ink-soft)]">
-            Reserve apenas 3 minutos por dia para plantar sementes de fé que podem acompanhar seu filho por toda a vida.
-          </p>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
 function Guarantee() {
   return (

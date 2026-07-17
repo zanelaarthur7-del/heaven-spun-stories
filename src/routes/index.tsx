@@ -30,9 +30,9 @@ import cloudImg from "@/assets/cloud.png";
 import parable1 from "@/assets/parable-1.jpg.asset.json";
 import parable2 from "@/assets/parable-2.jpg.asset.json";
 import parable3 from "@/assets/parable-3.jpg.asset.json";
-import avatar1 from "@/assets/avatar-1.jpg";
-import avatar2 from "@/assets/avatar-2.jpg";
-import avatar3 from "@/assets/avatar-3.jpg";
+import proof1 from "@/assets/proof-1.png.asset.json";
+import proof2 from "@/assets/proof-2.png.asset.json";
+import proof3 from "@/assets/proof-3.png.asset.json";
 
 const CHECKOUT_URL = "https://pay.wiapy.com/QgxtBvH_AVqs";
 
